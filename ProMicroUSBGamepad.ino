@@ -1,5 +1,5 @@
 /*
-	Code by Viktor René (@_tEvEy) https://illusionoftime.com
+	Code by Viktor René 2017 (@_tEvEy) https://illusionoftime.com
 	This code can be found at https://github.com/tevey/ProMicroUSBGamepad
 	Uses ArduinoJoystickLibrary(https://github.com/MHeironimus/ArduinoJoystickLibrary) by Matthew Heironimus
 */
