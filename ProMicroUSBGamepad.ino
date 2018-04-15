@@ -13,27 +13,23 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_GAMEPAD,
 	false, false,          // No rudder or throttle
 	false, false, false);  // No accelerator, brake, or steering
 
-// Constant that maps the phyical pin to the joystick button.
+// Constants that maps the arduino pin to the physical button.
 const int START_PIN = 8;
 const int SELECT_PIN = 9;
-
 const int CROSS_PIN = 10;
 const int CIRCLE_PIN = 14;
 const int TRIANGLE_PIN = 20;
 const int SQUARE_PIN = 16;
-
 const int R1_PIN = 19;
 const int R2_PIN = 18;
-
 const int L1_PIN = 3;
 const int L2_PIN = 2;
-
 const int UP_PIN = 4;
 const int RIGHT_PIN = 5;
 const int LEFT_PIN = 6;
 const int DOWN_PIN = 7;
 
-// Last state of the button
+// Last state of the buttons
 int joyStickStates[14][2] = {
 	{1, START_PIN},
 	{1, SELECT_PIN},
@@ -51,6 +47,7 @@ int joyStickStates[14][2] = {
 	{1, DOWN_PIN}
 };
 
+//constants that map gamepad buttons to button activated on computer
 const int SQUARE_BUTTON = 0;
 const int CROSS_BUTTON = 1;
 const int CIRCLE_BUTTON = 2;
@@ -62,18 +59,17 @@ const int R2_BUTTON = 7;
 const int START_BUTTON = 8;
 const int SELECT_BUTTON = 9;
 
+//dpad axis values
 const int JOYSTICK_CENTER = 128;
 const int JOYSTICK_MAX = 256;
 const int JOYSTICK_MIN = 0;
 
 void setup() {
-	// Initialize Button Pins
 	for (int i = 0; i < 14; ++i)
 	{
 		pinMode(joyStickStates[i][1], INPUT_PULLUP);
 	}
 
-	// Initialize Joystick Library
 	Joystick.begin();
 	Joystick.setXAxisRange(0, 256);
 	Joystick.setYAxisRange(0, 256);
@@ -81,7 +77,6 @@ void setup() {
 
 void loop() {
 
-	// Read pin values
 	for (int i = 0; i < 14; i++) {
 		int currentButtonState = !digitalRead(joyStickStates[i][1]);
 		if (currentButtonState != joyStickStates[i][0]) {
